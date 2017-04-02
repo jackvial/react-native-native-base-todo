@@ -94,33 +94,32 @@ export default class Todo extends Component {
             <List>
               {this.renderTodoList()}
             </List>
-
             {this.props.todos.length > 0 && <View
               style={{
                 flexDirection: 'row',
                 alignSelf: 'center',
                 justifyContent: 'space-around',
                 width,
-                marginTop: 50 }}
-            >
+                marginTop: 50 }}>
               <Button
                 transparent
                 bordered={this.props.displayType === 'all'}
-                onPress={() => this.props.setVisibilityFilter('all')}
-              >All</Button>
-
+                onPress={() => this.props.setVisibilityFilter('all')}>
+                  <Text>All</Text>
+                </Button>
               <Button
                 transparent
                 bordered={this.props.displayType === 'completed'}
-                onPress={() => this.props.setVisibilityFilter('completed')}
-              >Completed</Button>
-
+                onPress={() => this.props.setVisibilityFilter('completed')}>
+                  <Text>Completed</Text>
+                </Button>
               <Button
+                buttonText="Active"
                 transparent
                 bordered={this.props.displayType === 'active'}
-                onPress={() => this.props.setVisibilityFilter('active')}
-              >Active</Button>
-
+                onPress={() => this.props.setVisibilityFilter('active')}>
+                  <Text>Completed</Text>
+              </Button>
             </View>}
           </View>
         </Content>
@@ -147,8 +146,9 @@ export default class Todo extends Component {
           </InputGroup>
           <Button
             style={{ flex: 0.1, marginLeft: 15 }}
-            onPress={() => this.onSubmit()}
-          > Add </Button>
+            onPress={() => this.onSubmit()}>
+              <Text>Add</Text>
+            </Button>
         </View>
       </Container>
     );
