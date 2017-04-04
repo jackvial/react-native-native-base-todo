@@ -1,11 +1,18 @@
 import React, { PropTypes } from 'react';
+import { View } from 'react-native';
 import { Text, Icon, ListItem, CheckBox } from 'native-base';
 
 const TodoItem = ({ toggle, remove, item }) => (
-  <ListItem style={{ flex: 1 }}>
-    <CheckBox onPress={toggle} checked={item.completed} />
-    <Text style={{ alignSelf: 'center' }}>{item.text}</Text>
-    <Icon name="md-trash" style={{ color: '#000000' }} onPress={remove} />
+  <ListItem style={{ flex: 1, flexDirection: 'row' }}>
+    <View style={{width: '10%'}}>
+        <CheckBox onPress={toggle} checked={item.completed} />
+    </View>
+    <View style={{width: '80%'}}>
+        <Text>{item.text}</Text>
+    </View>
+    <View style={{ width: '10%', justifyContent: 'flex-end' }}>
+        <Icon name="md-trash" style={{ color: '#000000' }} onPress={remove} />
+    </View>
   </ListItem>
 );
 

@@ -85,20 +85,44 @@ export default class Todo extends Component {
   render() {
     return (
       <Container>
-        <Header >
-          <Title>NativeBase To-do App</Title>
+        <Header>
+          <Title style={{ marginTop: 12 }}>TODO</Title>
         </Header>
 
         <Content contentContainerStyle={{ justifyContent: 'space-between' }} >
-          <View >
+                <View
+          style={{
+            flex: 0,
+            padding: 5,
+            flexDirection: 'row',
+          }}
+        >
+          <InputGroup
+            borderType="underline"
+            style={{ flex: 0.9 }}
+          >
+            <Input
+              placeholder="Eat some cheese"
+              value={this.state.inputText}
+              onChangeText={inputText => this.setState({ inputText })}
+              onSubmitEditing={() => this.onSubmit()}
+              maxLength={35}
+            />
+          </InputGroup>
+          <Button
+            style={{ flex: 0.1, marginLeft: 15 }}
+            onPress={() => this.onSubmit()}>
+              <Text>Add</Text>
+            </Button>
+        </View>
+          <View>
             <List>
               {this.renderTodoList()}
             </List>
             {this.props.todos.length > 0 && <View
               style={{
                 flexDirection: 'row',
-                alignSelf: 'center',
-                justifyContent: 'space-around',
+                alignSelf: 'flex-end',
                 width,
                 marginTop: 50 }}>
               <Button
@@ -123,33 +147,6 @@ export default class Todo extends Component {
             </View>}
           </View>
         </Content>
-
-        <View
-          style={{
-            alignSelf: 'flex-end',
-            flex: 0,
-            padding: 5,
-            flexDirection: 'row',
-          }}
-        >
-          <InputGroup
-            borderType="underline"
-            style={{ flex: 0.9 }}
-          >
-            <Input
-              placeholder="Type Your Text Here"
-              value={this.state.inputText}
-              onChangeText={inputText => this.setState({ inputText })}
-              onSubmitEditing={() => this.onSubmit()}
-              maxLength={35}
-            />
-          </InputGroup>
-          <Button
-            style={{ flex: 0.1, marginLeft: 15 }}
-            onPress={() => this.onSubmit()}>
-              <Text>Add</Text>
-            </Button>
-        </View>
       </Container>
     );
   }
